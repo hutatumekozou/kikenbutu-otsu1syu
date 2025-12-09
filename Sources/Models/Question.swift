@@ -48,18 +48,18 @@ struct Question: Codable, Identifiable {
             throw DecodingError.dataCorruptedError(forKey: .question, in: container, debugDescription: "Missing question text.")
         }
         
+        let choices = try container.decode([String].self, forKey: .choices)
+        guard choices.count == 2 || choices.count == 4 else {
+            throw DecodingError.dataCorruptedError(forKey: .choices, in: container, debugDescription: "choices must contain exactly 2 or 4 entries.")
+        }
+        
         let answerIndex = try container.decodeIfPresent(Int.self, forKey: .answerIndex)
             ?? container.decodeIfPresent(Int.self, forKey: .correct)
         guard let answerIndexUnwrapped = answerIndex else {
             throw DecodingError.dataCorruptedError(forKey: .answerIndex, in: container, debugDescription: "Missing answer index.")
         }
-        guard (0..<4).contains(answerIndexUnwrapped) else {
-            throw DecodingError.dataCorruptedError(forKey: .answerIndex, in: container, debugDescription: "answer_index must be between 0 and 3.")
-        }
-        
-        let choices = try container.decode([String].self, forKey: .choices)
-        guard choices.count == 4 else {
-            throw DecodingError.dataCorruptedError(forKey: .choices, in: container, debugDescription: "choices must contain exactly 4 entries.")
+        guard (0..<choices.count).contains(answerIndexUnwrapped) else {
+            throw DecodingError.dataCorruptedError(forKey: .answerIndex, in: container, debugDescription: "answer_index must be between 0 and \(choices.count - 1).")
         }
         
         let decodedLabel = try container.decodeIfPresent(String.self, forKey: .answerLabel)

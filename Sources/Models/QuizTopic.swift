@@ -14,6 +14,12 @@ enum QuizTopic: CaseIterable, Identifiable {
     case marubatsuElderlyDisabled
     case marubatsuElderlyDisabled2
     case marubatsuElderlyDisabled3
+    case selectionElderlyDisabled
+    case marubatsuHealthDisabilities
+    case marubatsuHealthDisabilities2
+    case marubatsuHealthDisabilities3
+    case selectionHealthDisabilities
+    case selectionHealthDisabilities2
     
     var id: String { category }
     
@@ -34,6 +40,12 @@ enum QuizTopic: CaseIterable, Identifiable {
         case .marubatsuElderlyDisabled: return "【◯✖️】高齢者障害者"
         case .marubatsuElderlyDisabled2: return "【◯✖️】高齢者障害者2"
         case .marubatsuElderlyDisabled3: return "【◯✖️】高齢者障害者3"
+        case .selectionElderlyDisabled: return "選択 高齢者障害者"
+        case .marubatsuHealthDisabilities: return "【◯✖️】健康・障害"
+        case .marubatsuHealthDisabilities2: return "🩷【◯✖️】健康・障害2"
+        case .marubatsuHealthDisabilities3: return "【◯✖️】健康・障害3"
+        case .selectionHealthDisabilities: return "【選択】健康・障害"
+        case .selectionHealthDisabilities2: return "【選択】健康・障害2"
         }
     }
     
@@ -52,12 +64,18 @@ enum QuizTopic: CaseIterable, Identifiable {
         case .marubatsuElderlyDisabled: return "marubatsu_elderly_disabled"
         case .marubatsuElderlyDisabled2: return "marubatsu_elderly_disabled_2"
         case .marubatsuElderlyDisabled3: return "marubatsu_elderly_disabled_3"
+        case .selectionElderlyDisabled: return "selection_elderly_disabled"
+        case .marubatsuHealthDisabilities: return "marubatsu_health_disabilities"
+        case .marubatsuHealthDisabilities2: return "marubatsu_health_disabilities_2"
+        case .marubatsuHealthDisabilities3: return "marubatsu_health_disabilities_3"
+        case .selectionHealthDisabilities: return "selection_health_disability"
+        case .selectionHealthDisabilities2: return "selection_health_disability_2"
         }
     }
     
     var isMaruBatsu: Bool {
         switch self {
-        case .marubatsuElderlyDisabled, .marubatsuElderlyDisabled2, .marubatsuElderlyDisabled3:
+        case .marubatsuElderlyDisabled, .marubatsuElderlyDisabled2, .marubatsuElderlyDisabled3, .marubatsuHealthDisabilities, .marubatsuHealthDisabilities2, .marubatsuHealthDisabilities3:
             return true
         default:
             return false
