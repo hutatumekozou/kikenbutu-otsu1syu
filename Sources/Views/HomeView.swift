@@ -52,6 +52,10 @@ struct HomeView: View {
                     }
                     
                     Spacer()
+                    
+                    // 広告バナー
+                    BannerView()
+                        .frame(height: 50)
                 }
             }
             .navigationBarHidden(true)

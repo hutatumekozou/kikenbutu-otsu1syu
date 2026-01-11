@@ -187,3 +187,44 @@ extension AdsManager: GADFullScreenContentDelegate {
     }
 }
 #endif
+
+// MARK: - Banner View
+struct BannerView: UIViewRepresentable {
+    func makeUIView(context: Context) -> UIView {
+        #if canImport(GoogleMobileAds)
+        let banner = GADBannerView(adSize: GADAdSizeBanner)
+        
+        // Root view controller detection
+        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let rootVC = scene.windows.first?.rootViewController {
+            banner.rootViewController = rootVC
+        }
+        
+        #if DEBUG
+        banner.adUnitID = "ca-app-pub-3940256099942544/2934735716" // AdMob Test ID
+        #else
+        banner.adUnitID = "ca-app-pub-8365176591962448/7389255101" // Production ID
+        #endif
+        
+        banner.load(GADRequest())
+        return banner
+        #else
+        // Fallback for when GoogleMobileAds is not available (e.g. Preview)
+        let view = UIView()
+        view.backgroundColor = .gray
+        let label = UILabel()
+        label.text = "Banner Ad Area"
+        label.textColor = .white
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(label)
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        return view
+        #endif
+    }
+    
+    func updateUIView(_ uiView: UIView, context: Context) {}
+}

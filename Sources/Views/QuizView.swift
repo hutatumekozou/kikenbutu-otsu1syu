@@ -18,15 +18,23 @@ struct QuizView: View {
         ZStack {
             BackgroundView()
             
-            if !questions.isEmpty {
-                ScrollView {
-                    VStack(spacing: 20) {
-                        questionHeaderView
-                        questionTextView
-                        answerButtonsSection
-                        explanationSection
+            VStack(spacing: 0) {
+                if !questions.isEmpty {
+                    ScrollView {
+                        VStack(spacing: 20) {
+                            questionHeaderView
+                            questionTextView
+                            answerButtonsSection
+                            explanationSection
+                        }
                     }
+                } else {
+                    Spacer() // To push banner down if empty
                 }
+                
+                // 広告バナー
+                BannerView()
+                    .frame(height: 50)
             }
         }
         .navigationBarTitleDisplayMode(.inline)
