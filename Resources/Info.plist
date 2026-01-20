@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>ja_JP</string>
 	<key>CFBundleDisplayName</key>
-	<string>第二種免許 テスト問題</string>
+	<string>危険物乙1種</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -21,7 +21,7 @@
 	<key>CFBundleVersion</key>
 	<string>2</string>
 	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-8365176591962448~3382066644</string>
+	<string>ca-app-pub-8365176591962448~5098753088</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchScreen</key>

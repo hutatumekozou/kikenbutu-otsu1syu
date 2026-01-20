@@ -11,7 +11,7 @@ struct BackgroundView: View {
             GeometryReader { geo in
                 Image("LaunchBackground")
                     .resizable()
-                    .scaledToFit()
+                    .scaledToFill()
                     .frame(width: geo.size.width, height: geo.size.height, alignment: .center)
             }
             .ignoresSafeArea()

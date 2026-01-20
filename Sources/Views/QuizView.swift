@@ -68,7 +68,7 @@ struct QuizView: View {
 
     private var questionHeaderView: some View {
         HStack {
-            Text("第\(currentQuestionIndex + 1)問")
+            Text("第\(topic.startQuestionNumber + currentQuestionIndex)問")
                 .font(.title2)
                 .fontWeight(.bold)
                 .foregroundColor(.black)

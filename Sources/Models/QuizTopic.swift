@@ -154,10 +154,25 @@ enum QuizTopic: CaseIterable, Identifiable {
             return false
         }
     }
+    var startQuestionNumber: Int {
+        switch self {
+        case .class1Genre1: return 1
+        case .class1Genre2: return 11
+        case .class1Genre3: return 21
+        case .class1Genre4: return 31
+        case .class1Genre5: return 41
+        case .class1Genre6: return 51
+        case .class1Genre7: return 61
+        case .class1Genre8: return 71
+        case .class1Genre9: return 81
+        case .class1Genre10: return 91
+        default: return 1
+        }
+    }
 }
 
 enum QuizChapter: String, CaseIterable, Identifiable {
-    case class1 = "危険物乙1種類"
+    case class1 = "危険物乙1類"
 
     
     var id: String { rawValue }
